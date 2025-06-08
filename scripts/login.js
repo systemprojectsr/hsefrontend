@@ -1,5 +1,6 @@
 
-const loginForm = document.querySelector('.loginFform'); 
+const API_BASE = 'http://176.57.215.221:8080/';
+const loginForm = document.querySelector('.loginFform');
 
 
 // Функция для обработки входа
@@ -20,7 +21,7 @@ loginForm.addEventListener('submit', async (event) => {
     };
 
     try {
-      const response = await fetch('v1/login', { 
+      const response = await fetch(`${API_BASE}v1/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,4 +46,4 @@ loginForm.addEventListener('submit', async (event) => {
     }
   });
 
-  
+
