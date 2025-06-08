@@ -1,8 +1,9 @@
 const API_BASE = 'http://176.57.215.221:8080/';
-const registerForm = document.querySelector('.registartionForm');
+const registerForm = document.querySelector('.registrationForm');
+const registerBtn = document.querySelector('.registerSubmit');
 
 // Функция для обработки регистрации
-registerForm.addEventListener('submit', async (event) => {
+async function handleRegister(event) {
     event.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
     const fullName = document.querySelector('.registerName').value;
@@ -47,5 +48,12 @@ registerForm.addEventListener('submit', async (event) => {
     } catch (error) {
       console.error('Ошибка:', error);
     }
-  });
+  }
+
+if (registerForm) {
+  registerForm.addEventListener('submit', handleRegister);
+}
+if (registerBtn) {
+  registerBtn.addEventListener('click', handleRegister);
+}
 

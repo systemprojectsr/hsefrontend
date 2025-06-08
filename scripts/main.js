@@ -22,4 +22,27 @@ if (modal.classList.contains("hidden")) {
     })
 
 }
+
+// Загрузка карточек на главной странице
+const API_BASE_SEARCH = 'http://176.57.215.221:8070';
+const resultsContainer = document.getElementById('results');
+
+async function loadCards() {
+  if (!resultsContainer) return;
+  try {
+    const response = await fetch(`${API_BASE_SEARCH}/search`);
+    const data = await response.json();
+    resultsContainer.innerHTML = '';
+    data.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h3>${item.name}</h3><p>${item.description}</p><p>${item.price} ₽</p>`;
+      resultsContainer.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Load cards error:', err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadCards);
   
