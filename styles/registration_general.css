@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Mulish", sans-serif;
+}
+
+.header {
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+}
+
+.title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    color: #FF6D00;
+    text-align: center;
+}
+
+.registration {
+    margin-top: 120px;
+}
+
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.button {
+    width: 380px;
+    height: 60px;
+    background: #006FEE;
+    border-radius: 50px;
+    font-size: 20px;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0051c9;
+}
+
+.form, .registrationForm{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 400px;
+    margin: 30px auto 0 auto;
+}
+
+.form-input {
+    background-color: #EEEEEE;
+    color: #ffffff;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    outline: none;
+}
+
+.attach-link {
+    color: #FF6D00;
+    cursor: pointer;
+}

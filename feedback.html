@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка сотрудника</title>
+    <link rel="stylesheet" href="styles/feedback.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="main.html"><img src="img/logo.png" alt="Logo"></a>
+        </div>
+        <div class="headerRight">
+            <a href="customerProfile.html" class="headerProfile">
+                <img src="img/ava.jpg" alt="avatar" class="avatar">
+                <div class="profileInfo">
+                    <h2>Иван</h2>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<section class="main-container">
+    <div class="container">
+        <h2 class="title">Оцените работу нашего сотрудника</h2>
+        <div class="main-parameters">
+            <p class="parameters-bold"><strong>Компания:</strong></p>
+            <p class="parameters">Чистые окна</p>
+            <p class="parameters-bold"><strong>Услуга:</strong></p>
+            <p class="parameters">Мойка окон</p>
+            <p class="parameters-bold"><strong>Сотрудник:</strong></p>
+            <p class="parameters">Иван Петров</p>
+        </div>
+
+        <div class="stars" id="stars">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+        </div>
+
+        <script>
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    stars.forEach((s, idx) => {
+                        if (idx <= index) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        </script>
+        <div class="additional-feedback">
+            <div class="additional-feedback-title">
+                Дополнительный отзыв
+            </div>
+            <textarea placeholder="Расскажите подробнее о работе сотрудника..."></textarea>
+        </div>
+
+        <div class="filter-checkbox">
+            <h4>Что именно вам понравилось?</h4>
+            <div class="checkbox-group">
+                <label><input type="checkbox"> Пунктуальность</label>
+                <label><input type="checkbox"> Качество работы</label>
+                <label><input type="checkbox"> Вежливость</label>
+                <label><input type="checkbox"> Чистота и аккуратность</label>
+                <label><input type="checkbox"> Скорость работы</label>
+            </div>
+
+            <h4>Что вам не понравилось?</h4>
+            <div class="checkbox-group">
+                <label><input type="checkbox"> Пунктуальность</label>
+                <label><input type="checkbox"> Качество работы</label>
+                <label><input type="checkbox"> Вежливость</label>
+                <label><input type="checkbox"> Чистота и аккуратность</label>
+                <label><input type="checkbox"> Скорость работы</label>
+            </div>
+
+            <h4>Что можно улучшить?</h4>
+            <div class="checkbox-group">
+                <label><input type="checkbox"> Пунктуальность</label>
+                <label><input type="checkbox"> Качество работы</label>
+                <label><input type="checkbox"> Вежливость</label>
+                <label><input type="checkbox"> Чистота и аккуратность</label>
+                <label><input type="checkbox"> Скорость работы</label>
+            </div>
+        </div>
+        <button class="button">Отправить</button>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content container">
+            <div class="footer-column">
+                <h3>О нас</h3>
+                <p>Мы предоставляем услуги, чтобы улучшить вашу жизнь и бизнес. Узнайте больше о нас и наших
+                    предложениях.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p>Email: support@services.com</p>
+                <p>Телефон: 8 800 555 35 35</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

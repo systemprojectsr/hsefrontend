@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Mulish", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+}
+
+/****************Header*******************/
+
+.header {
+    padding: 20px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnLogin {
+    border-radius: 30px;
+    background-color: #006FEE;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 10px 30px;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btnLogin:hover {
+    background-color: #0056c7;
+}
+
+.headerRight {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.location {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin: auto 0;
+}
+
+.location svg {
+    margin: auto 0;
+    color: black;
+}
+
+.location p {
+    font-size: 17px;
+}
+
+
+/***************Section Search****************/
+.sectionSearch {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 600px;
+    height: 42px;
+    padding-left: 20px;
+    border: 2px solid #006FEE;
+    border-radius: 50px;
+    outline: none;
+    background: white;
+    color: gray;
+    font-size: 15px;
+}
+
+.btnSearch {
+    position: absolute;
+    border-radius: 50px;
+    top: 0;
+    right: 0px;
+    border: none;
+    background: #006FEE;
+    cursor: pointer;
+    padding: 12px 30px;
+    font-size: 20px;
+    color: white;
+}
+
+.searchForm {
+    position: relative;
+    margin: auto;
+}
+
+.btnFilters {
+    display: flex;
+    gap: 7px;
+    border-radius: 30px;
+    background-color: #006FEE;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btnFilters:hover {
+    background-color: #0056c7;
+}
+
+.btnFilters svg {
+    margin: auto;
+}
+
+.btnFilters p {
+    margin: auto;
+}
+
+/*****************Filter Items*********************/
+.filterItems {
+
+}
+
+.filterItems .container {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.filterItem {
+    border-radius: 30px;
+    border: 2px solid #FF6D00;
+    background-color: white;
+    padding: 10px 30px;
+    color: #FF6D00;
+    font-size: 18px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.filterItem:hover {
+    border-color: #D05900;
+    color: #D05900;
+    box-shadow: 4px 4px 44px -16px rgba(208, 89, 0, 0.2) inset;
+}
+
+/*****************Cards***************************/
+.cardGrid .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 40px 0;
+    justify-items: center;
+}
+
+.card {
+    background-color: #EEEEEE;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 4px 4px 49px -16px rgba(0, 0, 0, 0.28);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content p {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+}
+
+.card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-btn {
+    align-self: flex-end;
+    background-color: #006FEE;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+    background-color: #0056c7;
+}
+
+.card-btn p {
+    color: white;
+    font-size: 14px;
+    display: block;
+    margin: 0;
+}
+
+
+/************Footer**********************/
+.footer {
+    background-color: #0a0a15;
+    color: #d0d0d0;
+    padding: 40px 0 20px 0;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    max-width: 500px;
+}
+
+.footer-column h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.footer-column p {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
+    padding-top: 10px;
+    color: #888;
+    font-size: 13px;
+}
+
+/*****************popUp Login****************/
+
+.hidden {
+    display: none;
+}
+
+.popUpLogin {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-radius: 50px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+}
+
+.close-modal {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 50px;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.loginTitle {
+    text-align: center;
+    color: black;
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+    margin-bottom: 15px;;
+}
+
+.loginForm {
+    background-color: #d0d0d0;
+    color: black;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    width: 95%;
+    margin-bottom: 7px;
+}
+
+.loginButton {
+    background-color: #006FEE;
+    color: #ffffff;
+    padding: 14px 50px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 280px;
+    transition: background-color 0.3s ease;
+    border: none;
+    outline: none;
+    margin: 10px auto 35px auto;
+    display: block;
+    font-family: "Mulish", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+}
+
+.popUpLogin p {
+    color: black;
+    font-family: "Mulish", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+    font-size: 18px;
+    text-align: center;
+}
+
+.regBtn {
+    margin-bottom: 0;
+}

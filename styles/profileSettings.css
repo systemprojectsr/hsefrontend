@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Mulish", sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/***************Header*****************/
+.header {
+    padding: 20px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerRight {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.headerProfile {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    gap: 10px;
+    color: black;
+    align-items: center;
+}
+
+.editImage img {
+    border-radius: 50%;
+    width: 200px;
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    color: #FF6D00;
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+.mainEdit{
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+}
+
+.edit{
+    margin: auto 0;
+}
+
+.edit p{
+    margin-bottom: 5px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.link {
+    text-decoration: none;
+    color: #FF6D00;
+    margin-top: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.link:hover {
+    color: #D05900;
+}
+
+.btn{
+    border-radius: 30px;
+    background-color: #006FEE;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 10px 30px;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn:hover{
+    background-color: #0056c7;
+}
+
+.orange{
+    background-color: #FF6D00;
+}
+
+.orange:hover{
+    background-color: #D05900;
+}
+
+.settingsButtons{
+    text-align: center;
+}
+
+.headerPersonProfile{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    color: black;  
+    align-items: center;
+}
+
+.footer {
+    background-color: #0a0a15;
+    color: #d0d0d0;
+    padding: 40px 0 20px 0;
+    font-size: 14px;
+    margin-top: 240px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    max-width: 500px;
+}
+
+.footer-column h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.footer-column p {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
+    padding-top: 10px;
+    color: #888;
+    font-size: 13px;
+}

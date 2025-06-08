@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подбор Услуг</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="main.html"><img src="img/logo.png" alt="Logo"></a>
+        </div>
+        <div class="headerRight">
+            <div class="location">
+                <svg width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.99997 0C7.34781 0 4.80428 1.14883 2.92892 3.19376C1.05357 5.23869 0 8.01221 0 10.9042C0 18.2645 8.81247 26.5789 9.18747 26.9333C9.41389 27.1445 9.70203 27.2605 9.99997 27.2605C10.2979 27.2605 10.5861 27.1445 10.8125 26.9333C11.25 26.5789 19.9999 18.2645 19.9999 10.9042C19.9999 8.01221 18.9464 5.23869 17.071 3.19376C15.1957 1.14883 12.6521 0 9.99997 0ZM9.99997 24.0573C7.33748 21.3313 2.49999 15.4567 2.49999 10.9042C2.49999 8.7352 3.29017 6.65506 4.69668 5.12136C6.1032 3.58767 8.01085 2.72604 9.99997 2.72604C11.9891 2.72604 13.8967 3.58767 15.3033 5.12136C16.7098 6.65506 17.4999 8.7352 17.4999 10.9042C17.4999 15.4567 12.6625 21.3449 9.99997 24.0573ZM9.99997 5.45209C9.01106 5.45209 8.04437 5.77184 7.22213 6.37093C6.39988 6.97001 5.75902 7.82151 5.38058 8.81775C5.00215 9.81399 4.90313 10.9102 5.09606 11.9678C5.28898 13.0254 5.76518 13.9969 6.46445 14.7594C7.16371 15.5219 8.05462 16.0411 9.02452 16.2515C9.99442 16.4619 10.9998 16.3539 11.9134 15.9412C12.827 15.5286 13.6079 14.8298 14.1573 13.9332C14.7067 13.0366 15 11.9825 15 10.9042C15 9.45819 14.4732 8.07143 13.5355 7.04896C12.5978 6.0265 11.326 5.45209 9.99997 5.45209ZM9.99997 13.6302C9.50552 13.6302 9.02217 13.4703 8.61105 13.1708C8.19993 12.8713 7.87949 12.4455 7.69028 11.9474C7.50106 11.4493 7.45155 10.9011 7.54801 10.3723C7.64447 9.84355 7.88258 9.35781 8.23221 8.97657C8.58184 8.59533 9.02729 8.33569 9.51224 8.23051C9.99719 8.12532 10.4999 8.17931 10.9567 8.38564C11.4135 8.59196 11.8039 8.94137 12.0786 9.38966C12.3533 9.83796 12.5 10.365 12.5 10.9042C12.5 11.6272 12.2366 12.3205 11.7677 12.8318C11.2989 13.343 10.663 13.6302 9.99997 13.6302Z"
+                          fill="black"/>
+                </svg>
+                <p>Москва</p>
+            </div>
+            <button class="btnLogin">
+                Вход
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="popUpLogin hidden">
+    <button class="close-modal">&times;</button>
+    <h1 class="loginTitle">Вход</h1>
+    <form class="loginFform">
+        <input type="text" placeholder="Электорнная почта" class="loginEmail loginForm">
+        <input type="password" placeholder="Пароль" class="loginPassword loginForm">
+    </form>
+    <a href="companyProfile.html">
+        <button type="submit" class="loginButton">Войти в аккаунт</button>
+    </a>
+    <p>Нет аккаунта?</p>
+    <a href="registration.html">
+        <button type="submit" class="loginButton regBtn">Зарегистрироваться</button>
+    </a>
+</section>
+
+<div class="overlay hidden"></div>
+
+<section class="sectionSearch">
+    <div class="search">
+        <form class="searchForm">
+            <input type="text" placeholder="Поиск услуги">
+            <button type="submit" class="btnSearch">Найти</button>
+        </form>
+    </div>
+    <button class="btnFilters" onclick="document.location='filter.html'">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.51816 5.10984H13.2174C13.5563 6.7406 15.0046 7.9699 16.7341 7.9699C18.4639 7.9699 19.912 6.7406 20.2509 5.10984H23.4821C23.8865 5.10984 24.2142 4.78216 24.2142 4.37781C24.2142 3.97346 23.8865 3.64578 23.4821 3.64578H20.2509C19.9118 2.01482 18.4641 0.785522 16.7341 0.785522C15.0042 0.785522 13.5563 2.01482 13.2174 3.64558H1.51816C1.11381 3.64558 0.786133 3.97326 0.786133 4.37761C0.785942 4.78197 1.11381 5.10984 1.51816 5.10984ZM16.734 2.24978C17.9074 2.24978 18.8616 3.20442 18.8616 4.37742C18.8616 5.55061 17.907 6.50505 16.734 6.50505C15.5608 6.50505 14.6063 5.55041 14.6063 4.37742C14.6063 3.20422 15.5608 2.24978 16.734 2.24978ZM23.4825 11.7678H12.1065C11.7676 10.1371 10.3193 8.90779 8.58979 8.90779C6.86001 8.90779 5.41196 10.1371 5.07305 11.7678H1.51851C1.11415 11.7678 0.786474 12.0955 0.786474 12.4999C0.786474 12.9042 1.11416 13.2319 1.51851 13.2319H5.07305C5.41198 14.8627 6.86025 16.092 8.58979 16.092C10.3196 16.092 11.7676 14.8627 12.1065 13.2323H23.4825C23.8869 13.2323 24.2146 12.9046 24.2146 12.5003C24.2146 12.0959 23.8869 11.7678 23.4825 11.7678ZM8.58994 14.6277C7.41655 14.6277 6.4623 13.6731 6.4623 12.5001C6.4623 11.3269 7.41694 10.3724 8.58994 10.3724C9.76314 10.3724 10.7176 11.3271 10.7176 12.5001C10.7176 13.6731 9.76294 14.6277 8.58994 14.6277ZM23.4825 19.8899H16.9015C16.5625 18.2592 15.1143 17.0299 13.3847 17.0299C11.6549 17.0299 10.2069 18.2592 9.86797 19.8899H1.51836C1.114 19.8899 0.786328 20.2176 0.786328 20.6219C0.786328 21.0263 1.11401 21.354 1.51836 21.354H9.86797C10.2069 22.9847 11.6552 24.214 13.3847 24.214C15.1145 24.214 16.5625 22.9847 16.9015 21.354H23.482C23.8864 21.354 24.2141 21.0263 24.2141 20.6219C24.2143 20.2176 23.8868 19.8899 23.4824 19.8899H23.4825ZM13.3849 22.7498C12.2115 22.7498 11.2572 21.7951 11.2572 20.6221C11.2572 19.4489 12.2119 18.4945 13.3849 18.4945C14.5581 18.4945 15.5123 19.4488 15.5125 20.6216V20.6221V20.6227C15.5123 21.7956 14.5581 22.7498 13.3849 22.7498Z"
+                  fill="white"/>
+        </svg>
+        <p>Все категории</p>
+    </button>
+</section>
+
+<section class="filterItems">
+    <div class="container">
+        <button class="filterItem">
+            Грузовые перевозки
+        </button>
+        <button class="filterItem">
+            Ремонт техники
+        </button>
+        <button class="filterItem">
+            Клининг
+        </button>
+        <button class="filterItem">
+            Ремонт и отделка
+        </button>
+        <button class="filterItem">
+            Бытовые услуги
+        </button>
+    </div>
+</section>
+
+<section class="cardGrid">
+    <div class="container">
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <a href="service.html" class="card-btn">
+                    <p>Подробнее</p>
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/moika.png" alt="Услуга">
+            <div class="card-content">
+                <p>Профессиональная мойка окон</p>
+                <button class="card-btn">
+                    Подробнее
+                    <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6821 5.25939H0V6.46738H19.6821L15.2771 10.8722L16.1313 11.7264L21.9945 5.8632L16.1313 0L15.2771 0.854196L19.6821 5.25939Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content container">
+            <div class="footer-column">
+                <h3>О нас</h3>
+                <p>Мы предоставляем услуги, чтобы улучшить вашу жизнь и бизнес. Узнайте больше о нас и наших
+                    предложениях.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p>Email: support@services.com</p>
+                <p>Телефон: 8 800 555 35 35</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+<script src="scripts/login.js"></script>
+</body>
+</html>

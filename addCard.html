@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание карточки</title>
+    <link rel="stylesheet" href="styles/addCard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="main.html"><img src="img/logo.png" alt="Logo"></a>
+        </div>
+        <div class="headerRight">
+            <a href="companyProfile.html" class="headerProfile">
+                <img src="img/ava.jpg" alt="avatar" class="avatar">
+                <div class="profileInfo">
+                    <h2>MrClean</h2>
+                    <p class="rating">4.7/5 ⭐️</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
+<section class="main-container">
+    <div class="container">
+        <h1 class="title">Добавить объявление</h1>
+        <label class="label-title">Добавьте фото карточки услуги</label>
+        <label class="file-label" for="file-upload">Прикрепить файл</label>
+        <input type="file" id="file-upload" class="file-input">
+
+        <label class="label-title">Описание услуги</label>
+        <textarea class="textarea" placeholder="Расскажите подробнее про вашу услугу..."></textarea>
+
+        <div class="button-group">
+            <a href="companyProfile.html">
+                <button class="button">Опубликовать</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content container">
+            <div class="footer-column">
+                <h3>О нас</h3>
+                <p>Мы предоставляем услуги, чтобы улучшить вашу жизнь и бизнес. Узнайте больше о нас и наших
+                    предложениях.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p>Email: support@services.com</p>
+                <p>Телефон: 8 800 555 35 35</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
