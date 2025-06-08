@@ -51,5 +51,3 @@ if (loginForm) {
 if (loginBtn) {
   loginBtn.addEventListener('click', handleLogin);
 }
-
-
