@@ -3,6 +3,13 @@ const API_BASE = 'http://176.57.215.221:8080/';
 const loginForm = document.querySelector('.loginFform');
 const loginBtn = document.querySelector('.loginButton');
 
+async function hashPassword(password) {
+  const msgUint8 = new TextEncoder().encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 async function handleLogin(event) {
     event.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
@@ -10,11 +17,13 @@ async function handleLogin(event) {
     const password = document.querySelector('.loginPassword').value;
 
     // Формируем тело запроса согласно описанию API для входа
+    const passwordHash = await hashPassword(password);
+
     const requestBody = {
       user: {
         login: {
           email: email,
-          password: password
+          password_hash: passwordHash
         }
       }
     };
