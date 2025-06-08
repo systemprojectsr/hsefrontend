@@ -36,8 +36,9 @@ async function handleRegister(event) {
       const data = await response.json(); // Разбираем JSON-ответ
 
       if (response.ok) {
-        // Сохраняем токен в localStorage (можно сразу перенаправить на вход)
+        // Сохраняем токен в localStorage и cookie
         localStorage.setItem('authToken', data.user.token);
+        document.cookie = `authToken=${data.user.token}; path=/`;
 
         // Перенаправляем на страницу для авторизованных пользователей (замените 'dashboard.html' на ваш URL)
         window.location.href = 'companyProfile.html';

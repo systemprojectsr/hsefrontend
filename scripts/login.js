@@ -31,8 +31,9 @@ async function handleLogin(event) {
       const data = await response.json(); // Разбираем JSON-ответ
 
       if (response.ok) { // Вход прошел успешно
-        // Сохраняем токен в localStorage
+        // Сохраняем токен в localStorage и cookie
         localStorage.setItem('authToken', data.user.token);
+        document.cookie = `authToken=${data.user.token}; path=/`;
 
         window.location.href = 'companyProfile.html';
 

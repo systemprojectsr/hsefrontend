@@ -13,7 +13,13 @@ if (form && results) {
       data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<p>${item.name}</p><p>${item.price} ₽</p><p>${item.location}</p>`;
+        card.innerHTML = `
+          <img src="img/uborka.png" alt="Услуга">
+          <div class="card-content">
+            <p>${item.name}</p>
+            <p>${item.description || ''}</p>
+            <p>${item.price} ₽, ${item.location}</p>
+          </div>`;
         results.appendChild(card);
       });
     } catch(err) {
