@@ -22,4 +22,6 @@ if (modal.classList.contains("hidden")) {
     })
 
 }
+
+// Загрузка карточек на главной странице происходит в search.js
   
