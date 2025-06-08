@@ -1,4 +1,5 @@
-const registerForm = document.querySelector('.registartionForm'); 
+const API_BASE = 'http://176.57.215.221:8080/';
+const registerForm = document.querySelector('.registartionForm');
 
 // Функция для обработки регистрации
 registerForm.addEventListener('submit', async (event) => {
@@ -23,7 +24,7 @@ registerForm.addEventListener('submit', async (event) => {
     };
 
     try {
-      const response = await fetch('v1/register/client', {
+      const response = await fetch(`${API_BASE}v1/register/client`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -47,3 +48,4 @@ registerForm.addEventListener('submit', async (event) => {
       console.error('Ошибка:', error);
     }
   });
+
