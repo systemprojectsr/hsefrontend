@@ -36,12 +36,18 @@ async function handleRegister(event) {
       const data = await response.json(); // Разбираем JSON-ответ
 
       if (response.ok) {
-        // Сохраняем токен в localStorage и cookie
-        localStorage.setItem('authToken', data.user.token);
-        document.cookie = `authToken=${data.user.token}; path=/`;
+        const { token, type } = data.user;
+        // Сохраняем токен и тип аккаунта
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('accountType', type);
+        document.cookie = `authToken=${token}; path=/`;
 
-        // Перенаправляем на страницу для авторизованных пользователей (замените 'dashboard.html' на ваш URL)
-        window.location.href = 'companyProfile.html';
+        // Перенаправляем на страницу для авторизованных пользователей
+        if (type === 'company') {
+          window.location.href = 'companyProfile.html';
+        } else {
+          window.location.href = 'customerProfile.html';
+        }
 
       } else {
       }

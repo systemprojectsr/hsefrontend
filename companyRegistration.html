@@ -20,25 +20,22 @@
 </header>
 <div class="container">
     <h1 class="title">Регистрация</h1>
-    <form class="form">
-        <input type="text" placeholder="Название компании" class="form-input">
-        <input type="email" placeholder="Электронная почта" class="form-input">
-        <input type="tel" placeholder="Контактный номер телефона" class="form-input">
-        <input type="tel" placeholder="ФИО представителя" class="form-input">
-        <input type="tel" placeholder="Должность представителя" class="form-input">
-        <input type="tel" placeholder="ИНН/ОГРН" class="form-input">
-        <input type="tel" placeholder="Юридический адрес" class="form-input">
-        <input type="tel" placeholder="Тип услуг" class="form-input">
-        <input type="password" placeholder="Пароль" class="form-input">
+    <form class="form companyRegistrationForm">
+        <input type="text" placeholder="Название компании" class="form-input companyName">
+        <input type="email" placeholder="Электронная почта" class="form-input companyEmail">
+        <input type="tel" placeholder="Контактный номер телефона" class="form-input companyPhone">
+        <input type="text" placeholder="ФИО представителя" class="form-input agentName">
+        <input type="text" placeholder="Должность представителя" class="form-input agentPosition">
+        <input type="text" placeholder="ИНН/ОГРН" class="form-input companyId">
+        <input type="text" placeholder="Юридический адрес" class="form-input companyAddress">
+        <input type="text" placeholder="Тип услуг" class="form-input serviceType">
+        <input type="password" placeholder="Пароль" class="form-input companyPassword">
         <input type="password" placeholder="Повторите пароль" class="form-input">
         <label for="file-upload" class="attach-link">Прикрепить документы</label>
-        <input type="file" id="file-upload" style="display: none;">
+        <input type="file" id="file-upload" style="display: none;" multiple>
+        <button type="submit" class="button registerSubmit">Зарегистрироваться</button>
     </form>
-    <div class="button-group">
-        <a href="companyProfile.html">
-            <button class="button">Зарегистрироваться</button>
-        </a>
-    </div>
 </div>
+<script src="scripts/companyRegister.js"></script>
 </body>
 </html>
