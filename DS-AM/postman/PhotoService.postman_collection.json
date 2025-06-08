@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "5e3c8f4b-2b1c-4a2b-8c5a-9a0d3c8f3a5e",
+		"name": "Photo Service API",
+		"description": "Коллекция запросов для тестирования микросервиса обработки фотографий",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Статус сервиса",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"status"
+					]
+				},
+				"description": "Проверка состояния сервиса и его подключений"
+			},
+			"response": []
+		},
+		{
+			"name": "Информация о сервисе",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				},
+				"description": "Базовая информация о сервисе"
+			},
+			"response": []
+		},
+		{
+			"name": "Обработка фотографии",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resize\": true,\n    \"width\": 400,\n    \"height\": 300,\n    \"quality\": 85\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/photos/process?id=3,01ebc098bb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"photos",
+						"process"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3,01ebc098bb"
+						}
+					]
+				},
+				"description": "Обрабатывает фотографию согласно указанным параметрам"
+			},
+			"response": []
+		},
+		{
+			"name": "Загрузка фотографии",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "user_id",
+							"value": "test_user",
+							"type": "text"
+						},
+						{
+							"key": "company_id",
+							"value": "test_company",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "task_id",
+							"value": "task_123",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_task_result",
+							"value": "false",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/photos/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"photos",
+						"upload"
+					]
+				},
+				"description": "Загружает новую фотографию в сервис"
+			},
+			"response": []
+		},
+		{
+			"name": "Получение фотографии",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/photos/get?id={{photo_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"photos",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{photo_id}}"
+						}
+					]
+				},
+				"description": "Получает фотографию по ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Получение метаданных фотографии",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/photos/metadata?id={{photo_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"photos",
+						"metadata"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{photo_id}}"
+						}
+					]
+				},
+				"description": "Получает метаданные фотографии по ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Список фотографий",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/photos/list?user_id=test_user&limit=10&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"photos",
+						"list"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "test_user"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				},
+				"description": "Получает список фотографий с возможностью фильтрации и пагинации"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+} 

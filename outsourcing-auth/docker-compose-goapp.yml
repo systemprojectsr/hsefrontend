@@ -1,0 +1,14 @@
+services:
+  goapp:
+    container_name: goapp-auth
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PW}
+      - DB_NAME=${POSTGRES_DB}
+    ports:
+      - "8070:8070"

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обработка фотографий</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .panel {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        .range-value {
+            text-align: center;
+            font-weight: bold;
+            color: #3498db;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        .image-container {
+            margin-top: 15px;
+            text-align: center;
+            max-height: 400px;
+            overflow: auto;
+        }
+        .image-container img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        .checkbox-label input {
+            margin-right: 8px;
+        }
+        .title-with-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #toggleAdvanced {
+            font-size: 12px;
+            background-color: #eee;
+            color: #555;
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+        }
+        #advancedOptions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+        .hidden {
+            display: none;
+        }
+        #resizeToggle {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <h1>Обработка фотографий</h1>
+    
+    <div class="container">
+        <div class="panel">
+            <h2>Параметры обработки</h2>
+            
+            <div class="form-group">
+                <label for="photoId">ID фотографии:</label>
+                <input type="text" id="photoId" placeholder="Например: 3,01ebc098bb" required>
+            </div>
+            
+            <div class="form-group">
+                <div class="title-with-toggle">
+                    <label for="resizeToggle">Изменить размер:</label>
+                    <input type="checkbox" id="resizeToggle" checked>
+                </div>
+                
+                <div id="resizeControls">
+                    <div class="form-group">
+                        <label for="width">Ширина:</label>
+                        <input type="range" id="width" min="50" max="1920" value="400">
+                        <div class="range-value" id="widthValue">400px</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height">Высота:</label>
+                        <input type="range" id="height" min="50" max="1080" value="300">
+                        <div class="range-value" id="heightValue">300px</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="quality">Качество JPEG:</label>
+                <input type="range" id="quality" min="1" max="100" value="85">
+                <div class="range-value" id="qualityValue">85%</div>
+            </div>
+            
+            <div class="title-with-toggle">
+                <h3>Дополнительные параметры</h3>
+                <button id="toggleAdvanced">Показать</button>
+            </div>
+            
+            <div id="advancedOptions" class="hidden">
+                <div class="form-group">
+                    <label for="grayscale">Черно-белое изображение:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="grayscale">
+                            Преобразовать в оттенки серого
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="crop">Обрезка изображения:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="crop">
+                            Включить обрезку
+                        </label>
+                    </div>
+                    <div id="cropControls" class="hidden">
+                        <div class="form-group">
+                            <label for="cropX">X:</label>
+                            <input type="number" id="cropX" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="cropY">Y:</label>
+                            <input type="number" id="cropY" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="cropWidth">Ширина:</label>
+                            <input type="number" id="cropWidth" value="100" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="cropHeight">Высота:</label>
+                            <input type="number" id="cropHeight" value="100" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="processButton">Обработать фотографию</button>
+            
+            <div id="status" class="hidden"></div>
+        </div>
+        
+        <div class="panel">
+            <h2>Результат</h2>
+            <div id="resultContainer" class="image-container">
+                <p>Обработанное изображение появится здесь</p>
+            </div>
+            <div class="form-group" style="margin-top: 15px;">
+                <button id="downloadButton" disabled>Скачать обработанное изображение</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Элементы управления
+        const photoIdInput = document.getElementById('photoId');
+        const resizeToggle = document.getElementById('resizeToggle');
+        const widthInput = document.getElementById('width');
+        const heightInput = document.getElementById('height');
+        const qualityInput = document.getElementById('quality');
+        const widthValue = document.getElementById('widthValue');
+        const heightValue = document.getElementById('heightValue');
+        const qualityValue = document.getElementById('qualityValue');
+        const processButton = document.getElementById('processButton');
+        const statusDiv = document.getElementById('status');
+        const resultContainer = document.getElementById('resultContainer');
+        const downloadButton = document.getElementById('downloadButton');
+        const toggleAdvancedButton = document.getElementById('toggleAdvanced');
+        const advancedOptions = document.getElementById('advancedOptions');
+        const resizeControls = document.getElementById('resizeControls');
+        const grayscaleCheckbox = document.getElementById('grayscale');
+        const cropCheckbox = document.getElementById('crop');
+        const cropControls = document.getElementById('cropControls');
+        
+        // URL сервиса
+        const serviceUrl = 'http://localhost:8081';
+        
+        // Проверка доступности сервиса при загрузке страницы
+        fetch(`${serviceUrl}/status`)
+            .then(response => {
+                if (response.ok) {
+                    console.log('Сервис доступен');
+                } else {
+                    showStatus('Сервис недоступен или отвечает с ошибкой', 'error');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Статус сервиса:', data);
+            })
+            .catch(error => {
+                console.error('Ошибка при проверке статуса сервиса:', error);
+                showStatus('Не удается подключиться к сервису. Проверьте, запущен ли сервис на http://localhost:8081', 'error');
+            });
+        
+        // Обновление значений при изменении слайдеров
+        widthInput.addEventListener('input', () => {
+            widthValue.textContent = `${widthInput.value}px`;
+        });
+        
+        heightInput.addEventListener('input', () => {
+            heightValue.textContent = `${heightInput.value}px`;
+        });
+        
+        qualityInput.addEventListener('input', () => {
+            qualityValue.textContent = `${qualityInput.value}%`;
+        });
+        
+        // Показать/скрыть расширенные настройки
+        toggleAdvancedButton.addEventListener('click', () => {
+            advancedOptions.classList.toggle('hidden');
+            toggleAdvancedButton.textContent = advancedOptions.classList.contains('hidden') ? 'Показать' : 'Скрыть';
+        });
+        
+        // Управление отображением настроек изменения размера
+        resizeToggle.addEventListener('change', () => {
+            resizeControls.style.display = resizeToggle.checked ? 'block' : 'none';
+        });
+        
+        // Управление отображением настроек обрезки
+        cropCheckbox.addEventListener('change', () => {
+            cropControls.classList.toggle('hidden', !cropCheckbox.checked);
+        });
+        
+        // Обработка фотографии по нажатию кнопки
+        processButton.addEventListener('click', processPhoto);
+        
+        async function processPhoto() {
+            const photoId = photoIdInput.value.trim();
+            
+            if (!photoId) {
+                showStatus('Введите ID фотографии', 'error');
+                return;
+            }
+            
+            // Отключаем кнопку и показываем статус загрузки
+            processButton.disabled = true;
+            showStatus('Обработка фотографии...', 'loading');
+            
+            // Подготовка параметров для запроса
+            const params = {
+                resize: resizeToggle.checked,
+                width: parseInt(widthInput.value),
+                height: parseInt(heightInput.value),
+                quality: parseInt(qualityInput.value)
+            };
+            
+            // Добавляем дополнительные параметры, если они включены
+            if (grayscaleCheckbox.checked) {
+                params.grayscale = true;
+            }
+            
+            if (cropCheckbox.checked) {
+                params.crop = {
+                    x: parseInt(document.getElementById('cropX').value),
+                    y: parseInt(document.getElementById('cropY').value),
+                    width: parseInt(document.getElementById('cropWidth').value),
+                    height: parseInt(document.getElementById('cropHeight').value)
+                };
+            }
+            
+            try {
+                // Выполнение запроса к API
+                const response = await fetch(`${serviceUrl}/photos/process?id=${encodeURIComponent(photoId)}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
+                }
+                
+                // Получение данных изображения
+                const imageBlob = await response.blob();
+                
+                // Проверка, что получено изображение
+                if (!imageBlob.type.startsWith('image/')) {
+                    // Если ответ не изображение, пытаемся прочитать как текст
+                    const errorText = await imageBlob.text();
+                    throw new Error(`Получен не изображение: ${errorText}`);
+                }
+                
+                // Создание URL для изображения
+                const imageUrl = URL.createObjectURL(imageBlob);
+                
+                // Отображение обработанного изображения
+                resultContainer.innerHTML = `<img src="${imageUrl}" alt="Обработанное изображение">`;
+                
+                // Активируем кнопку скачивания
+                downloadButton.disabled = false;
+                downloadButton.onclick = () => {
+                    const a = document.createElement('a');
+                    a.href = imageUrl;
+                    a.download = `processed_${photoId.replace(/[,\/\\:]/g, '_')}.jpg`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                };
+                
+                showStatus('Фотография успешно обработана!', 'success');
+            } catch (error) {
+                console.error('Ошибка при обработке фотографии:', error);
+                showStatus(`Ошибка: ${error.message}`, 'error');
+                resultContainer.innerHTML = '<p>Произошла ошибка при обработке изображения</p>';
+            } finally {
+                // Включаем кнопку обратно
+                processButton.disabled = false;
+            }
+        }
+        
+        function showStatus(message, type) {
+            statusDiv.className = type;
+            statusDiv.textContent = message;
+            statusDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,38 @@
+# Игнорировать временные файлы Git
+.git
+.gitignore
+
+# Игнорировать Dockerfile и файлы Docker Compose
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Игнорировать директории и файлы с данными
+.data/
+*.db
+
+# Игнорировать бинарные файлы
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Игнорировать временные файлы и логи
+*.log
+*.tmp
+temp/
+tmp/
+logs/
+
+# Игнорировать файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Игнорировать директории с зависимостями
+vendor/
+node_modules/ 

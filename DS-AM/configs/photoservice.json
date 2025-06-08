@@ -1,0 +1,33 @@
+{
+    "server": {
+        "port": 8081,
+        "host": "0.0.0.0"
+    },
+    "storage": {
+        "type": "seaweedfs",
+        "config": {
+            "master_url": "seaweedfs-master:9333",
+            "volume_server_url": "seaweedfs-volume:8080",
+            "filer_url": "seaweedfs-filer:8888",
+            "replication": "000"
+        }
+    },
+    "image_processing": {
+        "thumbnail": {
+            "width": 200,
+            "height": 200,
+            "quality": 80
+        },
+        "medium": {
+            "width": 800,
+            "height": 600,
+            "quality": 85
+        },
+        "large": {
+            "width": 1920,
+            "height": 1080,
+            "quality": 90
+        },
+        "allowed_extensions": ["jpg", "jpeg", "png", "gif", "webp"]
+    }
+} 

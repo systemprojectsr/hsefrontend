@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # SeaweedFS Master сервер
+  seaweedfs-master:
+    image: chrislusf/seaweedfs:latest
+    ports:
+      - "9333:9333"
+    command: "master -ip=seaweedfs-master -port=9333"
+    volumes:
+      - seaweedfs-master-data:/data
+    environment:
+      - WEED_MAX_CPU=0.5
+    restart: always
+    networks:
+      - seaweedfs-network
+
+  # SeaweedFS Volume сервер
+  seaweedfs-volume:
+    image: chrislusf/seaweedfs:latest
+    ports:
+      - "8080:8080"
+    command: "volume -ip=seaweedfs-volume -port=8080 -mserver=seaweedfs-master:9333 -dataCenter=dc1 -rack=rack1 -max=10"
+    volumes:
+      - seaweedfs-volume-data:/data
+    depends_on:
+      - seaweedfs-master
+    environment:
+      - WEED_MAX_CPU=0.5
+    restart: always
+    networks:
+      - seaweedfs-network
+
+  # SeaweedFS Filer сервер
+  seaweedfs-filer:
+    image: chrislusf/seaweedfs:latest
+    ports:
+      - "8888:8888"
+    command: "filer -ip=seaweedfs-filer -port=8888 -master=seaweedfs-master:9333"
+    volumes:
+      - seaweedfs-filer-data:/data
+    depends_on:
+      - seaweedfs-master
+      - seaweedfs-volume
+    environment:
+      - WEED_MAX_CPU=0.5
+    restart: always
+    networks:
+      - seaweedfs-network
+
+  # Наш фотосервис
+  photoservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./configs:/app/configs
+    environment:
+      - EXTERNAL_HOST=localhost
+      - PUBLIC_VOLUME_URL=http://localhost:8080
+    depends_on:
+      - seaweedfs-master
+      - seaweedfs-volume
+      - seaweedfs-filer
+    restart: always
+    networks:
+      - seaweedfs-network
+
+networks:
+  seaweedfs-network:
+    driver: bridge
+
+volumes:
+  seaweedfs-master-data:
+  seaweedfs-volume-data:
+  seaweedfs-filer-data: 
