@@ -31,11 +31,18 @@ async function handleLogin(event) {
       const data = await response.json(); // Разбираем JSON-ответ
 
       if (response.ok) { // Вход прошел успешно
-        // Сохраняем токен в localStorage и cookie
-        localStorage.setItem('authToken', data.user.token);
-        document.cookie = `authToken=${data.user.token}; path=/`;
+        const { token, type } = data.user;
+        // Сохраняем токен и тип аккаунта
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('accountType', type);
+        document.cookie = `authToken=${token}; path=/`;
 
-        window.location.href = 'companyProfile.html';
+        // Перенаправляем в кабинет в зависимости от типа
+        if (type === 'company') {
+          window.location.href = 'companyProfile.html';
+        } else {
+          window.location.href = 'customerProfile.html';
+        }
 
       } else {
         alert('Ошибка!!!!')
