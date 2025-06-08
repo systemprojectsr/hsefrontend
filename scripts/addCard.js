@@ -1,12 +1,18 @@
 const API_BASE = 'http://176.57.215.221:8080/';
 const addForm = document.querySelector('.main-container');
+
+function getToken() {
+  const match = document.cookie.match(/(?:^|; )authToken=([^;]+)/);
+  return match ? match[1] : localStorage.getItem('authToken');
+}
+
 if (addForm) {
   const publishBtn = document.querySelector('.button-group .button');
   publishBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     const title = document.querySelector('.cardTitle').value;
     const description = document.querySelector('.textarea').value;
-    const token = localStorage.getItem('authToken');
+    const token = getToken();
     const body = {
       user: {
         login: {

@@ -36,7 +36,13 @@ async function loadCards() {
     data.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
-      card.innerHTML = `<h3>${item.name}</h3><p>${item.description}</p><p>${item.price} ₽</p>`;
+      card.innerHTML = `
+        <img src="img/uborka.png" alt="Услуга">
+        <div class="card-content">
+          <p>${item.name}</p>
+          <p>${item.description}</p>
+          <p>${item.price} ₽</p>
+        </div>`;
       resultsContainer.appendChild(card);
     });
   } catch (err) {
